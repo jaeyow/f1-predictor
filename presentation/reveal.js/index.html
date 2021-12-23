@@ -1,0 +1,183 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>General Assembly</title>
+
+		<link rel="stylesheet" href="dist/reset.css">
+		<link rel="stylesheet" href="dist/reveal.css">
+		<link rel="stylesheet" href="dist/theme/black.css">
+
+		<!-- Theme used for syntax highlighted code -->
+		<link rel="stylesheet" href="plugin/highlight/monokai.css">
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+				<section data-markdown>
+					<textarea data-template>
+						![](https://ga-dash.s3.amazonaws.com/production/assets/logo-9f88ae6c9c3871690e33280fcf557f33.png)
+						![](images/f1-logo.png)
+
+						Capstone Project, Part 4: Presentation
+						#### F1 Race Winner Prediction
+
+						![](images/f1-mclaren-car.png)
+
+						Jose Reyes
+					</textarea>					
+				</section>
+				<section data-markdown>
+					<textarea data-template>
+						![](https://ga-dash.s3.amazonaws.com/production/assets/logo-9f88ae6c9c3871690e33280fcf557f33.png)
+						![](images/f1-logo.png)
+
+						#### Problem Statement: 
+						- predict the winner of a 2021 season race 
+						- identify the strongest factors that contribute to winning a race
+						- explore and compare with other machine learning models
+					</textarea>					
+				</section>
+				<section data-markdown>
+					<textarea data-template>
+						![](https://ga-dash.s3.amazonaws.com/production/assets/logo-9f88ae6c9c3871690e33280fcf557f33.png)
+						![](images/f1-logo.png)
+
+						#### Data collection:
+						- motor racing API [ergast.com](http://ergast.com/mrd/)
+						- weather data scraped from [Wikipedia](https://en.wikipedia.org/wiki/2021_Abu_Dhabi_Grand_Prix)
+						- F1 domain information from [F1 Metrics](https://f1metrics.wordpress.com/)
+						- Official [Formula 1](https://www.formula1.com/) website
+					</textarea>					
+				</section>
+				<section data-markdown>
+					<textarea data-template>
+						![](https://ga-dash.s3.amazonaws.com/production/assets/logo-9f88ae6c9c3871690e33280fcf557f33.png)
+						![](images/f1-logo.png)
+
+						#### Data preparation:
+						- read [ergast.com](http://ergast.com/mrd/) API, and persist in [Mongo DB](https://www.mongodb.com/)
+						- [Beautiful Soup](https://beautiful-soup-4.readthedocs.io/en/latest/) and [Selenium](https://www.selenium.dev/) for extracting race weather data
+						- [Exploratory Data Analysis](http://localhost:8888/lab/tree/data-science/datr27_projects/final-project-part2-brief.ipynb) 
+					</textarea>					
+				</section>
+				<section data-markdown>
+					<textarea data-template>
+						![](https://ga-dash.s3.amazonaws.com/production/assets/logo-9f88ae6c9c3871690e33280fcf557f33.png)
+						![](images/f1-logo.png)
+
+						#### [Feature Engineering](http://localhost:8888/lab/tree/data-science/datr27_projects/final-project-part3-technical-notebook.ipynb#feature_eng):
+						- driver experience (veterans vs rookies)
+						- driver recent form (fix scoring for all drivers)
+						- driver recent wins (rolling window recent wins)
+						- driver age (younger drivers wins more races)
+						- driver recent DNFs
+						- home circuit advantage
+						- weather effects
+					</textarea>					
+				</section>
+				<section data-markdown>
+					<textarea data-template>
+						![](https://ga-dash.s3.amazonaws.com/production/assets/logo-9f88ae6c9c3871690e33280fcf557f33.png)
+						![](images/f1-logo.png)
+
+						#### Machine Learning modelling:
+						- regression or classification?
+						- we want to predict the race winner
+						- we also want to predict the finishing order
+						- Train/Test split?
+					</textarea>					
+				</section>
+				<section data-markdown>
+					<textarea data-template>
+						![](https://ga-dash.s3.amazonaws.com/production/assets/logo-9f88ae6c9c3871690e33280fcf557f33.png)
+						![](images/f1-logo.png)
+
+						#### Regression approach:
+						<img src="images/f1-regression-approach.png" width="600" height="400" /> 
+					</textarea>					
+				</section>
+				<section data-markdown>
+					<textarea data-template>
+						![](https://ga-dash.s3.amazonaws.com/production/assets/logo-9f88ae6c9c3871690e33280fcf557f33.png)
+						![](images/f1-logo.png)
+
+						#### Classification approach:
+						<img src="images/f1-classification-approach.png" width="650" height="400" />
+					</textarea>					
+				</section>
+				<section data-markdown>
+					<textarea data-template>
+						![](https://ga-dash.s3.amazonaws.com/production/assets/logo-9f88ae6c9c3871690e33280fcf557f33.png)
+						![](images/f1-logo.png)
+
+						#### Feature Importance:
+						<img src="images/f1-feature-importance.png" width="800" height="450" />
+					</textarea>					
+				</section>
+				<section data-markdown>
+					<textarea data-template>
+						![](https://ga-dash.s3.amazonaws.com/production/assets/logo-9f88ae6c9c3871690e33280fcf557f33.png)
+						![](images/f1-logo.png)
+
+						#### Champion/Challenger Summary:
+						<img src="images/f1-model-summary.png" width="800" height="450" />
+					</textarea>					
+				</section>
+				<section data-markdown>
+					<textarea data-template>
+						![](https://ga-dash.s3.amazonaws.com/production/assets/logo-9f88ae6c9c3871690e33280fcf557f33.png)
+						![](images/f1-logo.png)
+
+						#### Champion/Challenger Chart:
+						<img src="images/f1-champion-challenger-model.png" width="800" height="450" />
+					</textarea>					
+				</section>
+				<section data-markdown>
+					<textarea data-template>
+						![](https://ga-dash.s3.amazonaws.com/production/assets/logo-9f88ae6c9c3871690e33280fcf557f33.png)
+						![](images/f1-logo.png)
+
+						#### Champion Model:
+						- [Bagging Regressor](https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.BaggingRegressor.html) ([Decision Tree Regressor](https://scikit-learn.org/stable/modules/generated/sklearn.tree.DecisionTreeRegressor.html?highlight=decisiontree#sklearn.tree.DecisionTreeRegressor))
+						- Train time: 0.97s
+						- Test time: 0.42s
+						- Precision score: 66.67%
+						- Correctly predicting the winner in 14 out of 21 races in 2021 Season
+					</textarea>					
+				</section>
+				<section data-markdown>
+					<textarea data-template>
+						![](https://ga-dash.s3.amazonaws.com/production/assets/logo-9f88ae6c9c3871690e33280fcf557f33.png)
+						![](images/f1-logo.png)
+
+						Capstone Project, Part 4: Presentation
+						#### F1 Race Winner Prediction
+
+						![](images/f1-mclaren-car.png)
+
+						THANKS!
+					</textarea>					
+				</section>
+			</div>
+		</div>
+
+		<script src="dist/reveal.js"></script>
+		<script src="plugin/notes/notes.js"></script>
+		<script src="plugin/markdown/markdown.js"></script>
+		<script src="plugin/highlight/highlight.js"></script>
+		<script>
+			// More info about initialization & config:
+			// - https://revealjs.com/initialization/
+			// - https://revealjs.com/config/
+			Reveal.initialize({
+				hash: true,
+
+				// Learn about plugins: https://revealjs.com/plugins/
+				plugins: [ RevealMarkdown, RevealHighlight, RevealNotes ]
+			});
+		</script>
+	</body>
+</html>
