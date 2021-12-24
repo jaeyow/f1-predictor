@@ -1,10 +1,23 @@
 # ![](https://ga-dash.s3.amazonaws.com/production/assets/logo-9f88ae6c9c3871690e33280fcf557f33.png) Capstone Project, Part 1: Proposal
 ---
-#### [Capstone Project, Part 1: Proposal](./final-project-part1-proposal.ipynb)
-#### [Capstone Project, Part 2: Brief](./final-project-part2-brief.ipynb)
-#### [Capstone Project, Part 3: Technical Notebook](./final-project-part3-technical-notebook.ipynb)
+#### [Capstone Project, Part 1: Proposal](https://nbviewer.org/github/jaeyow/f1-predictor/blob/main/final-project-part1-proposal.ipynb)
+#### [Capstone Project, Part 2: Brief](https://nbviewer.org/github/jaeyow/f1-predictor/blob/main/final-project-part2-brief.ipynb)
+- [Writing data to MongoDB](https://nbviewer.org/github/jaeyow/f1-predictor/blob/main/final-project-part2-brief.ipynb#mongo_db)
+- [Data Dictionary](https://nbviewer.org/github/jaeyow/f1-predictor/blob/main/final-project-part2-brief.ipynb#data_dictionary)
+- [Map of races around the world](https://nbviewer.org/github/jaeyow/f1-predictor/blob/main/final-project-part2-brief.ipynb#world-map)
+
+#### [Capstone Project, Part 3: Technical Notebook](https://nbviewer.org/github/jaeyow/f1-predictor/blob/main/final-project-part3-technical-notebook.ipynb)
+- [Feature Engineering](https://nbviewer.org/github/jaeyow/f1-predictor/blob/main/final-project-part3-technical-notebook.ipynb#feature_eng)
+- [Regression Approaches](https://nbviewer.org/github/jaeyow/f1-predictor/blob/main/final-project-part3-technical-notebook.ipynb#regression_approaches)
+- [Classification Approaches](https://nbviewer.org/github/jaeyow/f1-predictor/blob/main/final-project-part3-technical-notebook.ipynb#classification_approaches)
+- [Feature Importance](https://nbviewer.org/github/jaeyow/f1-predictor/blob/main/final-project-part3-technical-notebook.ipynb#feature_importance)
+- [Feature Selection](https://nbviewer.org/github/jaeyow/f1-predictor/blob/main/final-project-part3-technical-notebook.ipynb#feature_selection)
+- [Models Comparison](https://nbviewer.org/github/jaeyow/f1-predictor/blob/main/final-project-part3-technical-notebook.ipynb#models_comparison)
+
 #### [Capstone Project, Part 4: Presentation](https://61c08c5e1627a3416b0c37b4--pensive-nobel-d54f9f.netlify.app/)
-#### [Capstone Project, Part 5: Appendix](./final-project-part5-appendix.ipynb)
+#### [Capstone Project, Part 5: Appendix](https://nbviewer.org/github/jaeyow/f1-predictor/blob/main/final-project-part5-appendix.ipynb)
+
+![](./images/f1-mclaren-car.png)
 
 ![](images/f1-mclaren-car.png)
 
