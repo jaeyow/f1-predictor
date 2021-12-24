@@ -17,8 +17,6 @@
 #### [Capstone Project, Part 4: Presentation](https://61c08c5e1627a3416b0c37b4--pensive-nobel-d54f9f.netlify.app/)
 #### [Capstone Project, Part 5: Appendix](https://nbviewer.org/github/jaeyow/f1-predictor/blob/main/final-project-part5-appendix.ipynb)
 
-![](./images/f1-mclaren-car.png)
-
 ![](images/f1-mclaren-car.png)
 
 ## Problem Statement
