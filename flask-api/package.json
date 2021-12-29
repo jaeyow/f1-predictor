@@ -1,0 +1,14 @@
+{
+  "name": "f1-prediction-api-flask",
+  "version": "1.0.0",
+  "description": "F1 Prediction API",
+  "author": "JO Reyes",
+  "scripts": {
+    "dev": "serverless wsgi serve",
+    "deploy": "serverless deploy"
+  },
+  "devDependencies": {
+    "serverless-python-requirements": "^5.1.0",
+    "serverless-wsgi": "^3.0.0"
+  }
+}
