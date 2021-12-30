@@ -14,7 +14,7 @@ import pickle
 model = pickle.load(open('f1-model.pkl','rb'))
 app = Flask(__name__)
 
-@app.route('/predict')
+@app.route('/predict',methods = ['POST', 'GET'])
 def predict():
     season = int(request.args.get('season'))
     round = int(request.args.get('round'))
@@ -57,6 +57,10 @@ class Postions:
 
 
    def toJSON(self):
-    return json.dumps(self, default=lambda o: o.__dict__, indent=4)
+    return {
+      'Position': self.Position, 
+      'Prediction': self.Prediction,
+      'Driver': self.Driver
+    }
 
  
