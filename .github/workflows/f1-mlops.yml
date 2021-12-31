@@ -30,4 +30,11 @@ jobs:
         MONGO_DB_USER: ${{secrets.MONGO_DB_USER}}
         MONGO_DB_PW: ${{secrets.MONGO_DB_PW}}
       run: |
-        python './scripts/create-csv-from-mongo.py'        
+        python './scripts/create-csv-from-mongo.py'
+    - name: Execute python scripts => Feature Engineering
+      run: |
+        python './scripts/feature-engineering.py'
+    - name: Execute python scripts => Machine Learning Model Building
+      run: |
+        python './scripts/build-ml-model.py'        
+        
