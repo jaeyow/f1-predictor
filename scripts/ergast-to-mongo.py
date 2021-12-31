@@ -7,8 +7,8 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
-username = os.environ['MONGO_DB_USER']
-password = os.environ['MONGO_DB_PW']
+username = os.getenv('MONGO_DB_USER')
+password = os.getenv('MONGO_DB_PW')
 conn_str = 'mongodb+srv://{username}:{password}@cluster0.pagvf.mongodb.net/f1Oracle?retryWrites=true&w=majority'
 print(conn_str)
 connect = pymongo.MongoClient(conn_str, serverSelectionTimeoutMS=5000)
