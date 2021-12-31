@@ -18,7 +18,6 @@ f1_seasons = json.loads(seasons.text)["MRData"]["SeasonTable"]["Seasons"]
 def write_races_to_db():
     # Write Races to DB
     try:
-        print("Connected successfully!!!")
         db = connect.f1Oracle
         collection = db.races
 
@@ -31,7 +30,6 @@ def write_races_to_db():
                 # add weather to the DB now to save time later when preparing the data for EDA and model creation                 
                 race['weather'] = get_race_weather_from_wikipedia(race['url'])
                 collection.insert_one(race)
-                # print('collection.insert_one...')
         print('Writing races to Mongo... DONE')
 
     except Exception as e: # work on python 3.x
@@ -39,7 +37,6 @@ def write_races_to_db():
         
 def write_drivers_to_db():
     # Write Drivers to DB
-    print("Connected successfully!!!")
     db = connect.f1Oracle
     collection = db.drivers
 
@@ -47,12 +44,11 @@ def write_drivers_to_db():
     cts = requests.get(f"https://ergast.com/api/f1/drivers.json?limit=1000")
     drivers = json.loads(cts.text)["MRData"]["DriverTable"]["Drivers"]
     for driver in drivers:
-        collection.update_one(driver, upsert=True)
+        collection.insert_one(driver)
     print('Writing drivers to Mongo... DONE')        
 
 def write_circuits_to_db():
     # Write Circuits to DB
-    print("Connected successfully!!!")
     db = connect.f1Oracle
     collection = db.circuits
 
@@ -74,6 +70,7 @@ def write_raceresults_to_db():
         for season in f1_seasons:
             season_results = requests.get(f"http://ergast.com/api/f1/{season['season']}/results.json?limit=1000")
             races = json.loads(season_results.text)["MRData"]["RaceTable"]["Races"]
+            print(f'Writing Season {season}...')
             for race_results in races:
                 race_results['weather'] = get_race_weather_from_db(race_results['season'], race_results['round'])
                 collection.insert_one(race_results)
@@ -128,8 +125,11 @@ def get_race_weather_from_wikipedia(link):
 # drop MongoDB Tables before we start
 db = connect.f1Oracle
 db.races.drop()
+db.drivers.drop()
+db.circuits.drop()
+db.results.drop()
 
 write_races_to_db()
-# write_drivers_to_db()
-# write_circuits_to_db()
-# write_raceresults_to_db()
+write_drivers_to_db()
+write_circuits_to_db()
+write_raceresults_to_db()
