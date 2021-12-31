@@ -62,7 +62,6 @@ def write_circuits_to_db():
 def write_raceresults_to_db():
     # Write Results to DB
     try:
-        print("Connected successfully!!!")
         db = connect.f1Oracle
         collection = db.results
 
