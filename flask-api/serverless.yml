@@ -1,4 +1,3 @@
-org: jaeyow
 app: f1-predictor
 service: f1-prediction-api-flask
 
