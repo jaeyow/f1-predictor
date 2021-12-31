@@ -43,7 +43,11 @@ jobs:
     - name: Python scripts => Machine Learning Model Building
       if: ${{ false }}
       run: |
-        python './scripts/build-ml-model.py'        
+        python './scripts/build-ml-model.py'
+    - name: Install Serverless Framework
+      run: npm install -g serverless
+    - name: Serverless AWS authentication
+      run: sls config credentials --provider aws --key ${{ secrets.AWS_KEY }} --secret ${{ secrets.AWS_SECRET }}        
     - name: Deploy model and API
       run: npm run deploy
       working-directory: ./flask-api
