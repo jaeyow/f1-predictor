@@ -57,7 +57,7 @@ def write_circuits_to_db():
     circuits = json.loads(cts.text)["MRData"]["CircuitTable"]["Circuits"]
     for circuit in circuits:
         collection.insert_one(circuit)
-        print('Writing circuits to Mongo... DONE')
+    print('Writing circuits to Mongo... DONE')
     
 def write_raceresults_to_db():
     # Write Results to DB
