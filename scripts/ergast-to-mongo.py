@@ -47,7 +47,7 @@ def write_drivers_to_db():
     cts = requests.get(f"https://ergast.com/api/f1/drivers.json?limit=1000")
     drivers = json.loads(cts.text)["MRData"]["DriverTable"]["Drivers"]
     for driver in drivers:
-        collection.insert_one(driver)
+        collection.update_one(driver, upsert=True)
     print('Writing drivers to Mongo... DONE')        
 
 def write_circuits_to_db():
@@ -126,8 +126,8 @@ def get_race_weather_from_wikipedia(link):
     return info
 
 # drop MongoDB Tables before we start
-db = connect.f1Oracle
-db.races.drop()
+# db = connect.f1Oracle
+# db.races.drop()
 
 write_races_to_db()
 # write_drivers_to_db()
