@@ -15,26 +15,35 @@ jobs:
       uses: actions/setup-python@v2
       with:
         python-version: "3.8"
+    - uses: actions/setup-node@v2
+      with:
+          node-version: '14'
     - name: Install dependencies
       run: |
         python -m pip install --upgrade pip
         if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
-    - name: Execute python scripts => Ergast to MongoDB
+    - name: Python scripts => Ergast to MongoDB
+      if: ${{ false }}
       env:
         MONGO_DB_USER: ${{secrets.MONGO_DB_USER}}
         MONGO_DB_PW: ${{secrets.MONGO_DB_PW}}
       run: |
         python './scripts/ergast-to-mongo.py'
-    - name: Execute python scripts => Creating csv results from MongoDB
+    - name: Python scripts => Creating csv results from MongoDB
+      if: ${{ false }}
       env:
         MONGO_DB_USER: ${{secrets.MONGO_DB_USER}}
         MONGO_DB_PW: ${{secrets.MONGO_DB_PW}}
       run: |
         python './scripts/create-csv-from-mongo.py'
-    - name: Execute python scripts => Feature Engineering
+    - name: Python scripts => Feature Engineering
+      if: ${{ false }}
       run: |
         python './scripts/feature-engineering.py'
-    - name: Execute python scripts => Machine Learning Model Building
+    - name: Python scripts => Machine Learning Model Building
+      if: ${{ false }}
       run: |
         python './scripts/build-ml-model.py'        
-        
+    - name: Deploy model and API
+      run: npm run deploy
+      working-directory: ./flask-api
