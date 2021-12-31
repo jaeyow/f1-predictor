@@ -11,8 +11,6 @@ username = os.getenv('MONGO_DB_USER')
 password = os.getenv('MONGO_DB_PW')
 conn_str = f'mongodb+srv://{username}:{password}@cluster0.pagvf.mongodb.net/f1Oracle?retryWrites=true&w=majority'
 connect = pymongo.MongoClient(conn_str, serverSelectionTimeoutMS=5000)
-secret = os.getenv('SECRET_SECRET')
-print(f'Secret: {secret}')
 
 seasons = requests.get("https://ergast.com/api/f1/seasons.json?limit=100")
 f1_seasons = json.loads(seasons.text)["MRData"]["SeasonTable"]["Seasons"]
@@ -128,8 +126,8 @@ def get_race_weather_from_wikipedia(link):
     return info
 
 # drop MongoDB Tables before we start
-# db = connect.f1Oracle
-# db.races.drop()
+db = connect.f1Oracle
+db.races.drop()
 
 write_races_to_db()
 # write_drivers_to_db()
