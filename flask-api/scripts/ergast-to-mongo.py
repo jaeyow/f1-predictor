@@ -1,0 +1,1 @@
+print('Ergast to MongoDB')
