@@ -9,13 +9,11 @@ load_dotenv()
 
 username = os.getenv('MONGO_DB_USER')
 password = os.getenv('MONGO_DB_PW')
-conn_str = 'mongodb+srv://{username}:{password}@cluster0.pagvf.mongodb.net/f1Oracle?retryWrites=true&w=majority'
-print(conn_str)
+conn_str = f'mongodb+srv://{username}:{password}@cluster0.pagvf.mongodb.net/f1Oracle?retryWrites=true&w=majority'
 connect = pymongo.MongoClient(conn_str, serverSelectionTimeoutMS=5000)
 
 seasons = requests.get("https://ergast.com/api/f1/seasons.json?limit=100")
 f1_seasons = json.loads(seasons.text)["MRData"]["SeasonTable"]["Seasons"]
-
 
 def write_races_to_db():
     # Write Races to DB
@@ -28,11 +26,12 @@ def write_races_to_db():
         for season in f1_seasons:
             race_schedule = requests.get(f"http://ergast.com/api/f1/{season['season']}.json")
             races = json.loads(race_schedule.text)["MRData"]["RaceTable"]["Races"]
+            print(f'Writing Season {season}...')
             for race in races:
                 # add weather to the DB now to save time later when preparing the data for EDA and model creation                 
-                # race['weather'] = get_race_weather_from_wikipedia(race['url'])
-                # collection.insert_one(race)
-                print('collection.insert_one...')
+                race['weather'] = get_race_weather_from_wikipedia(race['url'])
+                collection.insert_one(race)
+                # print('collection.insert_one...')
         print('Writing races to Mongo... DONE')
 
     except Exception as e: # work on python 3.x
@@ -125,6 +124,10 @@ def get_race_weather_from_wikipedia(link):
         info = 'Sunny' # Default to Sunny
 
     return info
+
+# drop MongoDB Tables before we start
+db = connect.f1Oracle
+db.races.drop()
 
 write_races_to_db()
 # write_drivers_to_db()
