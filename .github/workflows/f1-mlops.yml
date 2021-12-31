@@ -47,8 +47,10 @@ jobs:
         python './scripts/build-ml-model.py'
     - name: Install Serverless Framework
       run: npm install -g serverless
+      working-directory: ./flask-api    
     - name: Serverless AWS authentication
       run: sls config credentials --provider aws --key ${{ secrets.AWS_KEY }} --secret ${{ secrets.AWS_SECRET }}
+      working-directory: ./flask-api
     - name: Serverless WSGI
       run: sls plugin install -n serverless-wsgi
       working-directory: ./flask-api
