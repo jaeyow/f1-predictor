@@ -20,5 +20,9 @@ jobs:
         python -m pip install --upgrade pip
         if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
     - name: Execute python scripts => Ergast to MongoDB
+      env:
+        MONGO_DB_USER: ${{secrets.MONGO_DB_USER}}
+        MONGO_DB_PW: ${{secrets.MONGO_DB_PW}}
+        SECRETS_SECRETS: ${{secrets.SECRETS_SECRETS}}
       run: |
         python './scripts/ergast-to-mongo.py'
