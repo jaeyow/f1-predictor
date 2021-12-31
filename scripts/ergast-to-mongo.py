@@ -128,8 +128,8 @@ def get_race_weather_from_wikipedia(link):
     return info
 
 # drop MongoDB Tables before we start
-# db = connect.f1Oracle
-# db.races.drop()
+db = connect.f1Oracle
+db.races.drop()
 
 write_races_to_db()
 # write_drivers_to_db()
