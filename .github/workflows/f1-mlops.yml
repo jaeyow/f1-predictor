@@ -24,25 +24,21 @@ jobs:
         if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
         if [ -f ./flask-api/requirements.txt ]; then pip install -r ./flask-api/requirements.txt; fi
     - name: Python scripts => Ergast to MongoDB
-      if: ${{ false }}
       env:
         MONGO_DB_USER: ${{secrets.MONGO_DB_USER}}
         MONGO_DB_PW: ${{secrets.MONGO_DB_PW}}
       run: |
         python './scripts/ergast-to-mongo.py'
     - name: Python scripts => Creating csv results from MongoDB
-      if: ${{ false }}
       env:
         MONGO_DB_USER: ${{secrets.MONGO_DB_USER}}
         MONGO_DB_PW: ${{secrets.MONGO_DB_PW}}
       run: |
         python './scripts/create-csv-from-mongo.py'
     - name: Python scripts => Feature Engineering
-      if: ${{ false }}
       run: |
         python './scripts/feature-engineering.py'
     - name: Python scripts => Machine Learning Model Building
-      if: ${{ false }}
       run: |
         python './scripts/build-ml-model.py'
     - name: Install Serverless Framework
