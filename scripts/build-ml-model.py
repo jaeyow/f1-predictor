@@ -39,7 +39,7 @@ def regression_test_score(model, print_output=False):
         # --- Score --- 
         score += precision_score(merged_df['actual_pos'], merged_df['predicted_pos'], zero_division=0)
         
-    return score / len(races)
+    return score / len(races), len(races)
 
 def bagging_regressor_pickle(X_train, y_train):
     # now use the winning paramters to build the model
@@ -48,7 +48,7 @@ def bagging_regressor_pickle(X_train, y_train):
     model.fit(X_train, y_train)
     pickle.dump(model, open('./model/f1-model.pkl', 'wb'))
     pickle.dump(model, open('./flask-api/f1-model.pkl', 'wb'))
-    print(model.n_features_in_)
+    return model
 
 scoring_raw ={'model':[], 'params': [], 'score': [], 'train_time': [], 'test_time': []}
 
@@ -74,6 +74,10 @@ model_df.columns
 # ML Model Building - Model Training
 print(f'Start Bagging Regressor model training...')
 start = timer()
-bagging_regressor_pickle(X_train, y_train)
+model = bagging_regressor_pickle(X_train, y_train)
 end = timer()
-print(f'bagging_regressor_pickle() took {end - start} s, DONE')
+print(f'bagging_regressor_pickle() took {np.round(end - start, 4)}s, DONE.')
+
+model_score, num_races = regression_test_score(model)
+print(f'Bagging Regressor (DT) Precision score: {np.round(model_score*100, 3)}%')
+print(f'Correctly Predicting {np.round(model_score*num_races,4)} out of {num_races} races in Test set (2021 season)' )
