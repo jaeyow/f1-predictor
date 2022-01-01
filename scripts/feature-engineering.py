@@ -13,6 +13,7 @@ results_df
 api_df = results_df[results_df['Season']==2021]
 api_df.reset_index(drop=True, inplace=True)
 api_df.to_csv(f'2021_races_drivers.csv')
+api_df.to_csv(f'./flask-api/2021_races_drivers.csv')
 
 # Feature Engineering - Driver Experience
 print('Feature Engineering - Driver Experience')

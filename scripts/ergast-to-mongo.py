@@ -4,6 +4,7 @@ import pandas as pd
 import pymongo
 import os
 from dotenv import load_dotenv
+from selenium import webdriver
 
 load_dotenv()
 
@@ -108,7 +109,7 @@ def get_race_weather_from_wikipedia(link):
                         n = list(df.iloc[:,0]).index('Weather')
                         info = df.iloc[n,1]
                     else:
-                        driver = webdriver.Chrome()
+                        driver = webdriver.Firefox()
                         driver.get(link)
 
                         # italian page
@@ -116,7 +117,8 @@ def get_race_weather_from_wikipedia(link):
                         button.click()
                         info = driver.find_element_by_xpath('//*[@id="mw-content-text"]/div/table[1]/tbody/tr[9]/td').text
 
-    except:
+    except BaseException as err:
+        print(f"Unexpected {err=}, {type(err)=}")
         info = 'Sunny' # Default to Sunny
 
     return info

@@ -76,4 +76,6 @@ def create_results_dataframe_from_db_collection():
 print('Creating csv results from MongoDb...')
 inter_df = create_results_dataframe_from_db_collection()
 inter_df.to_csv('./csvs/results_from_mongo.csv')
+inter_df.to_csv('./flask-api/csvs/results_from_mongo.csv')
 print('Creating csv results from MongoDb, DONE...')
+print(inter_df.Weather.value_counts())
