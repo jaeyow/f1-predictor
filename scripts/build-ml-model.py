@@ -19,7 +19,7 @@ def regression_test_score(model, print_output=False):
         X_test = test.drop(['Position','Driver'], axis = 1)
         y_test = test['Position']
         X_test = pd.DataFrame(scaler.transform(X_test), columns = X_test.columns)
-        X_test.to_csv(f'{2021}_{race}.csv')
+        X_test.to_csv(f'./csvs/{2021}_{race}.csv')
 
         # make predictions
         prediction_df = pd.DataFrame(model.predict(X_test), columns = ['prediction'])
