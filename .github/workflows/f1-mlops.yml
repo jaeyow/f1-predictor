@@ -1,5 +1,5 @@
 # Pre-process and model building
-name: Python application
+name: F1 Prediction MLOps
 
 on:
   workflow_dispatch
