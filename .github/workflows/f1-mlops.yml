@@ -30,19 +30,19 @@ jobs:
         MONGO_DB_USER: ${{secrets.MONGO_DB_USER}}
         MONGO_DB_PW: ${{secrets.MONGO_DB_PW}}
       run: |
-        python './scripts/ergast-to-mongo.py'
+        python './scripts/1-ergast-to-mongo.py'
     - name: Python scripts => Creating csv results from MongoDB
       env:
         MONGO_DB_USER: ${{secrets.MONGO_DB_USER}}
         MONGO_DB_PW: ${{secrets.MONGO_DB_PW}}
       run: |
-        python './scripts/create-csv-from-mongo.py'
+        python './scripts/2-create-csv-from-mongo.py'
     - name: Python scripts => Feature Engineering
       run: |
-        python './scripts/feature-engineering.py'
+        python './scripts/3-feature-engineering.py'
     - name: Python scripts => Machine Learning Model Building
       run: |
-        python './scripts/build-ml-model.py'
+        python './scripts/4-build-ml-model.py'
     - name: Install Serverless Framework
       run: npm install -g serverless
       working-directory: ./flask-api    
