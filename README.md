@@ -1,3 +1,5 @@
+[![F1 Prediction MLOps](https://github.com/jaeyow/f1-predictor/actions/workflows/f1-mlops.yml/badge.svg)](https://github.com/jaeyow/f1-predictor/actions/workflows/f1-mlops.yml)
+
 # ![](https://ga-dash.s3.amazonaws.com/production/assets/logo-9f88ae6c9c3871690e33280fcf557f33.png) Capstone Project, Part 1: Proposal
 ---
 #### [Capstone Project, Part 1: Proposal](https://nbviewer.org/github/jaeyow/f1-predictor/blob/main/final-project-part1-proposal.ipynb)
