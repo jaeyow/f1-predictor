@@ -1,6 +1,6 @@
 [![F1 Prediction MLOps](https://github.com/jaeyow/f1-predictor/actions/workflows/f1-mlops.yml/badge.svg)](https://github.com/jaeyow/f1-predictor/actions/workflows/f1-mlops.yml)
 
-# ![](https://ga-dash.s3.amazonaws.com/production/assets/logo-9f88ae6c9c3871690e33280fcf557f33.png) Capstone Project, Part 1: Proposal
+# ![](https://ga-dash.s3.amazonaws.com/production/assets/logo-9f88ae6c9c3871690e33280fcf557f33.png) Capstone Project
 ---
 #### [Capstone Project, Part 1: Proposal](https://nbviewer.org/github/jaeyow/f1-predictor/blob/main/final-project-part1-proposal.ipynb)
 #### [Capstone Project, Part 2: Brief](https://nbviewer.org/github/jaeyow/f1-predictor/blob/main/final-project-part2-brief.ipynb)
@@ -19,6 +19,18 @@
 #### [Capstone Project, Part 4: Presentation](https://61c08c5e1627a3416b0c37b4--pensive-nobel-d54f9f.netlify.app/)
 #### [Capstone Project, Part 5: Appendix](https://nbviewer.org/github/jaeyow/f1-predictor/blob/main/final-project-part5-appendix.ipynb)
 
+#### [Capstone Project, Part 6: MLOps](https://github.com/jaeyow/f1-predictor/blob/main/.github/workflows/f1-mlops.yml)
+Using GitHub Actions as a cheap (and free) MLOps tool alternative: - invoke MLOps workflow on-demand (or with a cron schedule)
+- get latest source
+- setup Python build/MLOps environment
+- data retrieval and preparation
+- feature engineering
+- preparation for model training (including dummify categorical features)
+- feature selection
+- model building and scoring
+- setup serverless (lambda) API in AWS
+- deploy model to serverless API
+- profit!
 ![](images/f1-mclaren-car.png)
 
 ## Problem Statement
