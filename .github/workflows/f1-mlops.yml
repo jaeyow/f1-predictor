@@ -10,48 +10,62 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v2
+    - name: Checkout latest from source control
+      uses: actions/checkout@v2
+    
     - name: Set up Python 3.8
       uses: actions/setup-python@v2
       with:
         python-version: "3.8"
-    - uses: actions/setup-node@v2
+        
+    - name: Set up Node.js environment
+      uses: actions/setup-node@v2
       with:
           node-version: '14'
+          
     - name: Install dependencies
       run: |
         python -m pip install --upgrade pip
         if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+        
     - name: Install Chrome
       uses: browser-actions/setup-chrome@latest
-    - name: Python scripts => Ergast to MongoDB
+      
+    - name: Python scripts => Ergast to MongoDB (data sourcing)
       env:
         MONGO_DB_USER: ${{secrets.MONGO_DB_USER}}
         MONGO_DB_PW: ${{secrets.MONGO_DB_PW}}
       run: |
         python './scripts/1-ergast-to-mongo.py'
-    - name: Python scripts => Creating csv results from MongoDB
+        
+    - name: Python scripts => Creating csv results from MongoDB (data preparation)
       env:
         MONGO_DB_USER: ${{secrets.MONGO_DB_USER}}
         MONGO_DB_PW: ${{secrets.MONGO_DB_PW}}
       run: |
         python './scripts/2-create-csv-from-mongo.py'
+        
     - name: Python scripts => Feature Engineering
       run: |
         python './scripts/3-feature-engineering.py'
-    - name: Python scripts => Machine Learning Model Building
+        
+    - name: Python scripts => Machine Learning Model Building and Scoring
       run: |
         python './scripts/4-build-ml-model.py'
+        
     - name: Install Serverless Framework
       run: npm install -g serverless
       working-directory: ./flask-api    
+      
     - name: Serverless AWS authentication
       run: sls config credentials --provider aws --key ${{ secrets.AWS_KEY }} --secret ${{ secrets.AWS_SECRET }}
       working-directory: ./flask-api
+      
     - name: Serverless WSGI
       run: sls plugin install -n serverless-wsgi
       working-directory: ./flask-api
-    - name: Deploy model and API
+      
+    - name: Deploy ML model and API
       run: npm run deploy
       working-directory: ./flask-api
       env:
