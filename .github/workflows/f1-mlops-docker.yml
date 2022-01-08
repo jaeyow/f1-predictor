@@ -1,0 +1,15 @@
+# Pre-process and model building
+name: F1 Prediction MLOps (Docker)
+
+on:
+  workflow_dispatch
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout latest from source control
+      uses: actions/checkout@v2
+    
