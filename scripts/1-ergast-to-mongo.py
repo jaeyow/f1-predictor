@@ -1,10 +1,12 @@
 import requests
 import json
+import numpy as np
 import pandas as pd
 import pymongo
 import os
 from dotenv import load_dotenv
 from selenium import webdriver
+from timeit import default_timer as timer
 
 load_dotenv()
 
@@ -28,9 +30,17 @@ def write_races_to_db():
             races = json.loads(race_schedule.text)["MRData"]["RaceTable"]["Races"]
             print(f"Writing Season {season['season']}...")
             for race in races:
-                # add weather to the DB now to save time later when preparing the data for EDA and model creation                 
+                # add weather to the DB now to save time later when preparing the data for EDA and model creation      
+                start = timer()           
                 race['weather'] = get_race_weather_from_wikipedia(race['url'])
+                end = timer()
+                print(f'Getting from wiki {race["round"]} => {np.round(end - start, 4)}s')
+
+                start = timer()
                 collection.insert_one(race)
+                end = timer()
+                print(f'Writing race {race["round"]} => {np.round(end - start, 4)}s')
+                
         print('Writing races to Mongo... DONE')
 
     except Exception as e: # work on python 3.x
