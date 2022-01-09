@@ -31,11 +31,15 @@ RUN ls -la && pwd
 
 RUN sls plugin install -n serverless-wsgi
 
-ARG SLS_KEY
+ARG SLS_KEY=dummykey
 
-ARG SLS_SECRET
+ARG SLS_SECRET=dummysecret
 
-RUN sls config credentials --provider aws --key ${SLS_KEY}  --secret ${SLS_SECRET}
+ENV ENV_SLS_KEY=${SLS_KEY}
+
+ENV ENV_SLS_SECRET=${SLS_SECRET}
+
+RUN sls config credentials --provider aws --key ${ENV_SLS_KEY}  --secret ${ENV_SLS_SECRET}
 
 # install chrome
 RUN apt-get install wget -y
