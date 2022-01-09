@@ -49,4 +49,4 @@ RUN apt update -y
 RUN apt install -y google-chrome-stable
 
 # Run scripts
-# RUN python './scripts/1-ergast-to-mongo.py'
+RUN python './scripts/1-ergast-to-mongo.py'
