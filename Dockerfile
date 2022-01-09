@@ -21,13 +21,13 @@ WORKDIR /
 
 COPY . /app/
 
-RUN ls -la
+# RUN ls -la
 
 RUN npm install -g serverless
 
 WORKDIR /app/flask-api
 
-RUN ls -la && pwd
+# RUN ls -la && pwd
 
 RUN sls plugin install -n serverless-wsgi
 
