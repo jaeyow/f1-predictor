@@ -5,6 +5,7 @@ on:
   push:
     branches:
       - 'feature-ci-cd'
+      - 'main'
 
 jobs:
   docker:
