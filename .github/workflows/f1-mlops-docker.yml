@@ -25,4 +25,7 @@ jobs:
         options: -e MONGO_DB_USER=${{secrets.MONGO_DB_USER}} -e MONGO_DB_PW=${{secrets.MONGO_DB_PW}} -e ENV_SLS_KEY=${{secrets.AWS_KEY}} -e ENV_SLS_SECRET=${{secrets.AWS_SECRET}}
         run: |
           python "./scripts/__run_all.py"
+          cd flask-api
+          npm run deploy
+          
     
