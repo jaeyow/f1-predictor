@@ -31,17 +31,14 @@ def write_races_to_db():
             race_schedule = requests.get(f"http://ergast.com/api/f1/{season['season']}.json")
             races = json.loads(race_schedule.text)["MRData"]["RaceTable"]["Races"]
             print(f"Writing Season {season['season']}...")
+            start = timer()
             for race in races:
                 # add weather to the DB now to save time later when preparing the data for EDA and model creation      
-                start = timer()           
                 race['weather'] = get_race_weather_from_wikipedia(race['url'])
-                end = timer()
-                print(f'Getting from wiki {race["round"]} => {np.round(end - start, 4)}s')
-
-                start = timer()
                 collection.insert_one(race)
-                end = timer()
-                print(f'Writing race {race["round"]} => {np.round(end - start, 4)}s')
+                
+            end = timer()
+            print(f"Writing season {season['season']} => {np.round(end - start, 4)}s")
                 
         print('Writing races to Mongo... DONE')
 
