@@ -5,6 +5,8 @@ from datetime import datetime
 import warnings
 warnings.filterwarnings('ignore')
 
+print('F1 Predictor => Feature Engineering...')
+
 results_df = pd.read_csv('./csvs/results_from_mongo.csv')
 results_df.drop(columns=['Unnamed: 0'],inplace=True)
 results_df

@@ -5,6 +5,8 @@ import pymongo
 import os
 from dotenv import load_dotenv
 
+print('F1 Predictor => Create csv file (results_from_mongo.csv) from MongoDB...')
+
 load_dotenv()
 
 username = os.getenv('MONGO_DB_USER')

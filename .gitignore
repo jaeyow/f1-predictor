@@ -2,3 +2,4 @@
 .DS_Store
 /secrets
 .env
+/scripts/__pycache__

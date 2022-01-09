@@ -8,6 +8,8 @@ from dotenv import load_dotenv
 from selenium import webdriver
 from timeit import default_timer as timer
 
+print('F1 Predictor => Reading Ergast MRD and writing to MongoDB...')
+
 load_dotenv()
 
 username = os.getenv('MONGO_DB_USER')

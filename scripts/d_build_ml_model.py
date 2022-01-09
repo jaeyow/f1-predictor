@@ -10,6 +10,8 @@ import pickle
 import warnings
 warnings.filterwarnings('ignore')
 
+print('F1 Predictor => Building Machine Learning model...')
+
 def regression_test_score(model, print_output=False):
     # --- Test ---
     score = 0
