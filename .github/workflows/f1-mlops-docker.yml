@@ -21,7 +21,7 @@ jobs:
       with:
         registry: jaeyow
         image: f1_predictor:latest
-        options: -e MONGO_DB_USER=${secrets.MONGO_DB_USER} -e MONGO_DB_PW=${secrets.MONGO_DB_PW} -e ENV_SLS_KEY=${secrets.AWS_KEY} -e ENV_SLS_SECRET=${secrets.AWS_SECRET}
+        options: -e MONGO_DB_USER=${{secrets.MONGO_DB_USER}} -e MONGO_DB_PW=${{secrets.MONGO_DB_PW}} -e ENV_SLS_KEY=${{secrets.AWS_KEY}} -e ENV_SLS_SECRET=${{secrets.AWS_SECRET}}
         run: |
           echo "Running Container..."
     
