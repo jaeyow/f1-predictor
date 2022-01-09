@@ -143,5 +143,5 @@ db.results.drop()
 
 write_drivers_to_db()
 write_circuits_to_db()
-# write_races_to_db()
-# write_raceresults_to_db()
+write_races_to_db()
+write_raceresults_to_db()
