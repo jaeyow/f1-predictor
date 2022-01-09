@@ -1,3 +1,4 @@
+# Build and push image to Docker Hub
 name: F1 Prediction MLOps (CI/CD)
 
 on:
