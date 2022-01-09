@@ -48,5 +48,7 @@ RUN echo 'deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main' |
 RUN apt update -y
 RUN apt install -y google-chrome-stable
 
+WORKDIR /app
+
 # Run scripts
 RUN python './scripts/1-ergast-to-mongo.py'
