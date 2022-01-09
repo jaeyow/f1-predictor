@@ -14,7 +14,8 @@ jobs:
       uses: actions/checkout@v2
     - uses: addnab/docker-run-action@v3
       with:
-        image: jaeyow/f1_predictor:latest
+        registry: jaeyow
+        image: f1_predictor:latest
         options: -e MONGO_DB_USER=${MONGO_DB_USER} -e MONGO_DB_PW=${MONGO_DB_PW} -e ENV_SLS_KEY=${AWS_KEY} -e ENV ENV_SLS_SECRET=${AWS_SECRET}
         run: |
           echo "Running Container..."
