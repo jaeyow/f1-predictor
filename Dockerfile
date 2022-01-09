@@ -51,4 +51,4 @@ RUN apt install -y google-chrome-stable
 WORKDIR /app
 
 # Run scripts
-RUN python './scripts/1-ergast-to-mongo.py'
+# RUN python './scripts/1-ergast-to-mongo.py'
