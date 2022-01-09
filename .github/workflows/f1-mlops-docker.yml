@@ -12,11 +12,16 @@ jobs:
     steps:
     - name: Checkout latest from source control
       uses: actions/checkout@v2
+    - name: Login to DockerHub
+      uses: docker/login-action@v1
+      with:
+        username: ${{ secrets.DOCKERHUB_USER }}
+        password: ${{ secrets.DOCKERHUB_PW }}
     - uses: addnab/docker-run-action@v3
       with:
         registry: jaeyow
         image: f1_predictor:latest
-        options: -e MONGO_DB_USER=${MONGO_DB_USER} -e MONGO_DB_PW=${MONGO_DB_PW} -e ENV_SLS_KEY=${AWS_KEY} -e ENV_SLS_SECRET=${AWS_SECRET}
+        options: -e MONGO_DB_USER=${secrets.MONGO_DB_USER} -e MONGO_DB_PW=${secrets.MONGO_DB_PW} -e ENV_SLS_KEY=${secrets.AWS_KEY} -e ENV_SLS_SECRET=${secrets.AWS_SECRET}
         run: |
           echo "Running Container..."
     
