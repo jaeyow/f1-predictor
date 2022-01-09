@@ -36,10 +36,10 @@ ARG SLS_KEY=dummykey
 
 ARG SLS_SECRET=dummysecret
 
-ENV ENV_SLS_KEY=${SLS_KEY}
+ENV AWS_ACCESS_KEY_ID=${SLS_KEY}
 
-ENV ENV_SLS_SECRET=${SLS_SECRET}
+ENV AWS_SECRET_ACCESS_KEY=${SLS_SECRET}
 
-RUN sls config credentials --provider aws --key ${ENV_SLS_KEY}  --secret ${ENV_SLS_SECRET}
+RUN sls config credentials --provider aws --key ${AWS_ACCESS_KEY_ID}  --secret ${AWS_SECRET_ACCESS_KEY}
 
 WORKDIR /app
