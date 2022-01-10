@@ -30,7 +30,6 @@ def write_races_to_db():
         for season in f1_seasons:
             race_schedule = requests.get(f"http://ergast.com/api/f1/{season['season']}.json")
             races = json.loads(race_schedule.text)["MRData"]["RaceTable"]["Races"]
-            print(f"Writing Season {season['season']}...")
             start = timer()
             for race in races:
                 # add weather to the DB now to save time later when preparing the data for EDA and model creation      
@@ -79,7 +78,7 @@ def write_raceresults_to_db():
         for season in f1_seasons:
             season_results = requests.get(f"http://ergast.com/api/f1/{season['season']}/results.json?limit=1000")
             races = json.loads(season_results.text)["MRData"]["RaceTable"]["Races"]
-            print(f"Writing Season {season['season']}...")
+            print(f"Writing Season {season['season']} results...")
             for race_results in races:
                 race_results['weather'] = get_race_weather_from_db(race_results['season'], race_results['round'])
                 collection.insert_one(race_results)
@@ -128,7 +127,7 @@ def get_race_weather_from_wikipedia(link):
 
     except BaseException as err:
         # print(f"Unexpected {err=}, {type(err)=}")
-        print(f"Unexpected error, defaulting weather to Sunny")
+        # print(f"Unexpected error, defaulting weather to Sunny")
         info = 'Sunny' # Default to Sunny
 
     return info
