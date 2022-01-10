@@ -12,7 +12,7 @@ jobs:
     steps:
     - name: Checkout latest from source control
       uses: actions/checkout@v2
-      
+
     - uses: addnab/docker-run-action@v3
       with:
         username: ${{ secrets.DOCKERHUB_USER }}
@@ -22,8 +22,8 @@ jobs:
         run: |
           python "./scripts/a_ergast_to_mongo.py"
           python "./scripts/b_create_csv_from_mongo.py"
-          python "./scripts/c_feature_engineering"
-          python "./scripts/d_build_ml_model"
+          python "./scripts/c_feature_engineering.py"
+          python "./scripts/d_build_ml_model.py"
           cd flask-api
           npm run deploy
           
